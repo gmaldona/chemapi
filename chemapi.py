@@ -17,6 +17,14 @@ def get_group_blocks():
             group_blocks.append(element['groupBlock'])
     return jsonify(group_blocks)
 
+@app.route('/chemapi/atoms/properties/', methods=['GET'])
+def get_properties():
+    atom = element_json[0]
+    properties = []
+    for property in atom.keys():
+        properties.append(property)
+    return jsonify(properties)
+
 @app.route('/chemapi/atoms/<string:groupblock>', methods=['GET'])
 def get_atoms_in_group_block(groupblock):
     parsed_groupblock_list = []
